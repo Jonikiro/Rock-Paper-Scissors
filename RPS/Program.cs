@@ -10,52 +10,42 @@ namespace RPS
     {
         static void Main(string[] args)
         {
-            //Initialize variables
-            string exit;                //Sets up exit variable
-            int userInt;                //Sets up for user input
+            // Initialize variables
+            string exit;                // Sets up exit variable
+            int userInt;                // Sets up for user input
             string userChoice;
-
-            Console.Write("HELLO!!!!!!!!!!!!!");
+            string[] arrChoices = { "rock", "paper", "scissors" };
 
             do
             {
-                userInt = 0;            //Used for victory/loss calculation
+                userInt = 0;            // Used for victory/loss calculation
 
-                //User input validation loop
+                // User input validation loop
                 while (true)
                 {
                     Console.Write("Choose rock, paper, or scissors: ");
-                    userChoice = Console.ReadLine().Trim().ToLower();   //Normalizes user input
+                    userChoice = Console.ReadLine().Trim().ToLower();   // Normalizes user input
 
-                    //User choice announcement
-                    switch (userChoice)
+                    // User choice announcement
+                    if (arrChoices.Any(userChoice.Contains))
                     {
-                        case "rock":
-                            Console.WriteLine("\nYou chose rock.");
-                            userInt = 1;
-                            break;
-                        case "paper":
-                            Console.WriteLine("\nYou chose paper.");
-                            userInt = 2;
-                            break;
-                        case "scissors":
-                            Console.WriteLine("\nYou chose scissors.");
-                            userInt = 3;
-                            break;
-                        default:
-                            Console.WriteLine("\nPlease enter one of the three options: ");
-                            break;
+                        Console.WriteLine("\nYou chose " + userChoice + ".");
+                        userInt = Array.IndexOf(arrChoices, userChoice) + 1;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nPlease enter one of the three options: ");
                     }
 
-                    //Loop break check
+                    // Loop break check
                     if (userInt != 0) break;
                 }
 
-                //Initiate RNG
+                // Initiate RNG
                 Random random = new Random();
                 int computerChoice = random.Next(1, 3);
 
-                //Computer choice announcement
+                // Computer choice announcement
                 switch (computerChoice)
                 {
                     case 1:
@@ -69,7 +59,7 @@ namespace RPS
                         break;
                 }
 
-                //Win/Lose condition announcement
+                // Win/Lose condition announcement
                 if (userInt == computerChoice)
                 {
                     Console.WriteLine("It's a tie!");
@@ -85,7 +75,7 @@ namespace RPS
                     Console.WriteLine("You lost...");
                 }
 
-                //Replay functionality
+                // Replay functionality
                 Console.Write("\nWould you like to try again? Type y or n: ");
                 exit = Console.ReadLine().Trim().ToLower();   //Normalizes user input
 
