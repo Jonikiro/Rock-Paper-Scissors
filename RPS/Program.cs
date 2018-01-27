@@ -11,20 +11,28 @@ namespace RPS
         static void Main(string[] args)
         {
             // Initialize variables
-            string exit;                // Sets up exit variable
-            int userInt;                // Sets up for user input
+            // Sets up exit variable
+            string exit;
+
+            // Sets up for user input
+            int userInt;
             string userChoice;
+
+            // Sets up array of choices
             string[] arrChoices = { "rock", "paper", "scissors" };
 
             do
             {
-                userInt = 0;            // Used for victory/loss calculation
+                // Used for victory/loss calculation
+                userInt = 0;
 
                 // User input validation loop
                 while (userInt == 0)
                 {
                     Console.WriteLine("Choose rock, paper, or scissors: ");
-                    userChoice = Console.ReadLine().Trim().ToLower();   // Normalizes user input
+                    
+                    // Normalizes user input
+                    userChoice = Console.ReadLine().Trim().ToLower();   
 
                     // User choice announcement
                     if (arrChoices.Any(userChoice.Contains))
@@ -63,12 +71,17 @@ namespace RPS
 
                 // Replay functionality
                 Console.Write("\nWould you like to try again? Type y or n: ");
-                exit = Console.ReadLine().Trim().ToLower();   //Normalizes user input
 
-                while (exit != "y" && exit != "n")  //Input validation
+                // Normalizes user input
+                exit = Console.ReadLine().Trim().ToLower();
+
+                // Input validation
+                while (exit != "y" && exit != "n")
                 {
                     Console.WriteLine("\nPlease enter y or n: ");
-                    exit = Console.ReadLine().Trim().ToLower();   //Normalizes user input
+
+                    // Normalizes user input
+                    exit = Console.ReadLine().Trim().ToLower();
                 }
 
                 Console.WriteLine("\n");
