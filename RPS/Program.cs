@@ -15,6 +15,8 @@ namespace RPS
             int userInt;                //Sets up for user input
             string userChoice;
 
+            Console.Write("HELLO!!!!!!!!!!!!!");
+
             do
             {
                 userInt = 0;            //Used for victory/loss calculation
