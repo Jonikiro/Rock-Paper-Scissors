@@ -21,7 +21,7 @@ namespace RPS
                 userInt = 0;            // Used for victory/loss calculation
 
                 // User input validation loop
-                while (true)
+                while (userInt == 0)
                 {
                     Console.Write("Choose rock, paper, or scissors: ");
                     userChoice = Console.ReadLine().Trim().ToLower();   // Normalizes user input
@@ -36,9 +36,6 @@ namespace RPS
                     {
                         Console.WriteLine("\nPlease enter one of the three options: ");
                     }
-
-                    // Loop break check
-                    if (userInt != 0) break;
                 }
 
                 // Initiate RNG
