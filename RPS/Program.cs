@@ -23,7 +23,7 @@ namespace RPS
                 // User input validation loop
                 while (userInt == 0)
                 {
-                    Console.Write("Choose rock, paper, or scissors: ");
+                    Console.WriteLine("Choose rock, paper, or scissors: ");
                     userChoice = Console.ReadLine().Trim().ToLower();   // Normalizes user input
 
                     // User choice announcement
@@ -43,18 +43,7 @@ namespace RPS
                 int computerChoice = random.Next(1, 3);
 
                 // Computer choice announcement
-                switch (computerChoice)
-                {
-                    case 1:
-                        Console.WriteLine("The computer chose rock.");
-                        break;
-                    case 2:
-                        Console.WriteLine("The computer chose paper.");
-                        break;
-                    case 3:
-                        Console.WriteLine("The computer chose scissors.");
-                        break;
-                }
+                Console.WriteLine("The computer chose " + arrChoices.ElementAt(computerChoice - 1) + ".");
 
                 // Win/Lose condition announcement
                 if (userInt == computerChoice)
