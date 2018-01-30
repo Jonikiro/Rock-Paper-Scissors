@@ -10,64 +10,50 @@ namespace RPS
     {
         static void Main(string[] args)
         {
-            //Initialize variables
-            string exit;                //Sets up exit variable
-            int userInt;                //Sets up for user input
+            // Initialize variables
+            // Sets up exit variable
+            string exit;
+
+            // Sets up for user input
+            int userInt;
             string userChoice;
+
+            // Sets up array of choices
+            string[] arrChoices = { "rock", "paper", "scissors" };
 
             do
             {
-                userInt = 0;            //Used for victory/loss calculation
+                // Used for victory/loss calculation
+                userInt = 0;
 
-                //User input validation loop
-                while (true)
+                // User input validation loop
+                while (userInt == 0)
                 {
-                    Console.Write("Choose rock, paper, or scissors: ");
-                    userChoice = Console.ReadLine().Trim().ToLower();   //Normalizes user input
+                    Console.WriteLine("Choose rock, paper, or scissors: ");
+                    
+                    // Normalizes user input
+                    userChoice = Console.ReadLine().Trim().ToLower();   
 
-                    //User choice announcement
-                    switch (userChoice)
+                    // User choice announcement
+                    if (arrChoices.Any(userChoice.Contains))
                     {
-                        case "rock":
-                            Console.WriteLine("\nYou chose rock.");
-                            userInt = 1;
-                            break;
-                        case "paper":
-                            Console.WriteLine("\nYou chose paper.");
-                            userInt = 2;
-                            break;
-                        case "scissors":
-                            Console.WriteLine("\nYou chose scissors.");
-                            userInt = 3;
-                            break;
-                        default:
-                            Console.WriteLine("\nPlease enter one of the three options: ");
-                            break;
+                        Console.WriteLine("\nYou chose " + userChoice + ".");
+                        userInt = Array.IndexOf(arrChoices, userChoice) + 1;
                     }
-
-                    //Loop break check
-                    if (userInt != 0) break;
+                    else
+                    {
+                        Console.WriteLine("\nPlease enter one of the three options: ");
+                    }
                 }
 
-                //Initiate RNG
+                // Initiate RNG
                 Random random = new Random();
                 int computerChoice = random.Next(1, 3);
 
-                //Computer choice announcement
-                switch (computerChoice)
-                {
-                    case 1:
-                        Console.WriteLine("The computer chose rock.");
-                        break;
-                    case 2:
-                        Console.WriteLine("The computer chose paper.");
-                        break;
-                    case 3:
-                        Console.WriteLine("The computer chose scissors.");
-                        break;
-                }
+                // Computer choice announcement
+                Console.WriteLine("The computer chose " + arrChoices.ElementAt(computerChoice - 1) + ".");
 
-                //Win/Lose condition announcement
+                // Win/Lose condition announcement
                 if (userInt == computerChoice)
                 {
                     Console.WriteLine("It's a tie!");
@@ -83,14 +69,19 @@ namespace RPS
                     Console.WriteLine("You lost...");
                 }
 
-                //Replay functionality
+                // Replay functionality
                 Console.Write("\nWould you like to try again? Type y or n: ");
-                exit = Console.ReadLine().Trim().ToLower();   //Normalizes user input
 
-                while (exit != "y" && exit != "n")  //Input validation
+                // Normalizes user input
+                exit = Console.ReadLine().Trim().ToLower();
+
+                // Input validation
+                while (exit != "y" && exit != "n")
                 {
                     Console.WriteLine("\nPlease enter y or n: ");
-                    exit = Console.ReadLine().Trim().ToLower();   //Normalizes user input
+
+                    // Normalizes user input
+                    exit = Console.ReadLine().Trim().ToLower();
                 }
 
                 Console.WriteLine("\n");
